@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<record id="view_odooconnector_backend_project_form" model="ir.ui.view">
+    <field name="name">odooconnector.backend.project.form</field>
+    <field name="model">odooconnector.backend</field>
+    <field name="inherit_id" ref="odooconnector_base.view_odooconnector_backend_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//button[@name='import_product_uom']" position="after">
+            <button name="import_project"
+                    type="object"
+                    string="Import Projects" />
+            <button name="import_project_task"
+                    type="object"
+                    string="Import Tasks" />
+            <button name="import_project_task_work"
+                    type="object"
+                    string="Import Tasks Works" />
+        </xpath>
+        <xpath expr="//page[last()]" position="after">
+            <page string="Projects">
+                <group string="Import">
+                    <field name="import_project_domain_filter" />
+                    <field name="import_project_task_domain_filter" />
+                    <field name="import_project_task_domain_filter" />
+                </group>
+                <group string="Export">
+                    <field name="default_export_project"/>
+                    <field name="default_export_project_domain"
+                        attrs="{'invisible': [('default_export_project', '=', False)]}"/>
+                    <field name="default_export_project_task"/>
+                    <field name="default_export_project_task_domain"
+                        attrs="{'invisible': [('default_export_project_task', '=', False)]}"/>
+                    <field name="default_export_project_task_work"/>
+                    <field name="default_export_project_task_work_domain"
+                        attrs="{'invisible': [('default_export_project_task_work', '=', False)]}"/>
+                </group>
+            </page>
+        </xpath>
+    </field>
+</record>
+
+</data>
+</openerp>
